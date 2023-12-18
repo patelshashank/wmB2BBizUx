@@ -1,0 +1,71 @@
+<div class="fullpage">
+    <div *ngIf="!formJSON || !valuesJSON">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    <mat-card>
+      <mat-card-title>
+        <div class="row">
+          <img class="col-lg-1 col-sm-1 logo" src="../assets/images/softwareag LOGO.png" alt="Softwareag Logo" />
+          <div class="col-lg-2 col-sm-3 title justify-content-start">
+            <div class="justify-content-start titleHeading">Multimatic</div>
+          </div>
+          <h3 class="col-lg-4 col-sm-5" style="margin-top: 20px;">Transction ID: {{TransactionID}}</h3>
+          <div class="col-lg-4 col-sm-1"></div>
+          <div class="col-lg-1 col-sm-1 justify-content-end">
+            <a routerLink="">
+                <button mat-icon-button color="primary" aria-label="Home" style="margin-top: 10px;">
+                    <mat-icon>home</mat-icon>
+                </button>
+            </a>  
+          </div>        
+        </div>
+      </mat-card-title>
+    </mat-card>
+    <div *ngIf="formJSON && valuesJSON" style="padding-bottom: 100px;">
+        <lib-gp-dynamic-form [appearance]="appearance" [formJSON]="formJSON" [valuesJSON] = "valuesJSON" (formSubmitted)="onFormSubmitted($event)" (inputsChanged) ="inputsChanged($event)" >
+        </lib-gp-dynamic-form>
+
+    
+        <div style="width: 50%; margin-left: 25%;" *ngIf="valuesJSON.LineItems">
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1" style="padding-bottom: 50px;">
+                <ng-container matColumnDef="LineId">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        LineId
+                    </th>
+                <td mat-cell *matCellDef="let element">{{ element.LineId}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="CustomerPartNumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        CustomerPartNumber
+                    </th>
+                <td mat-cell *matCellDef="let element">{{ element.CustomerPartNumber }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="PartialQuantity">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        PartialQuantity
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{ element.PartialQuantity }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="TotalQuantity">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        TotalQuantity
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{ element.TotalQuantity }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="PONumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        PONumber
+                    </th>
+                    <td mat-cell *matCellDef="let element">{{ element.PONumber }}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="this.displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns:this.displayedColumns"></tr>
+            </table>
+        </div>
+    </div>
+</div>

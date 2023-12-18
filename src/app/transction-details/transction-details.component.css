@@ -1,14 +1,10 @@
-body{
-    width: 99.2%;
-    height: 100%;
-}
 .fullpage{
     width: 100%;
     display: contents;
     align-content: center;
     align-items: center;
-    height:95vh;
-    padding-bottom: 10vh;
+    height:80vh;
+    padding-bottom: 50px;
 }
 .logo{
     margin-left: 20px;
@@ -29,28 +25,4 @@ body{
 mat-card{
     width: 100%;
     height: fit-content;
-}
-
-.table-div{
-    width: 98%;
-    margin-left: 1%;
-    padding-top: 1%;
-    overflow-x: auto;
-}
-
-.mat-mdc-form-field-subscript-wrapper{
-    height: 0px !important
-}
-
-.footer-div {
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
-    height: 40px;
-}
-
-.footer-img {
-    padding: 5px;
-    width: 100px;
 }
